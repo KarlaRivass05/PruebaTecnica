@@ -39,5 +39,5 @@ Esto se para cada pagina de escel con los datos y primero se agrega los datos qu
 
 ### 5. **Ejecutar el Script**
 
-Una vez que se importaron los archivos CSV a la base de datos, puedes ejecutar el script 
+Una vez que se importaron los archivos CSV a la base de datos, puedes ejecutar el script, sin embargo para evitar errores e inconvenientes ejecutar las consultas una a una.
 
