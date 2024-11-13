@@ -1,5 +1,5 @@
 -- Crear la base de datos llamada "prueba"
-CREATE DATABASE prueba;
+
 USE prueba;
 
 SELECT * FROM usuarios;
@@ -21,6 +21,10 @@ CREATE TABLE roles (
 )
 */
 
+-- colocar id a la tabla 
+
+ALTER TABLE usuarios
+ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY;
 
 -- Agregar una nueva columna llamada "edad" de tipo INT a la tabla "usuarios"
 ALTER TABLE usuarios
@@ -51,6 +55,12 @@ SELECT documento_identidad, COUNT(*) AS duplicados
 FROM usuarios 
 GROUP BY documento_identidad 
 HAVING COUNT(*) > 1;
+-- hacer un join a la misma tabla para elimianr los duplicados, se eliminarán las filas con el id más alto, conservando la fila con el id más bajo
+DELETE c1 FROM usuarios c1
+JOIN usuarios c2 
+WHERE
+    c1.documento_identidad = c2.documento_identidad AND
+    c1.id > c2.id;
 
 -- Identificar fechar con valores no validos
 SELECT nombre_completo, fecha_ingreso, antiguedad FROM usuarios WHERE fecha_ingreso >= YEAR(CURRENT_DATE) || fecha_ingreso = 'invalid-date' ; 
